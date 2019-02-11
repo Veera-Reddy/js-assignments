@@ -113,8 +113,8 @@ function getLinearEquationRoot(a, b) {
  */
 // Math.sqrt(Math.pow(x1,2)+Math.pow(y1,2)) + Math.sqrt(Math.pow(x2,2)+Math.pow(y2,2));
 function getAngleBetweenVectors(x1, y1, x2, y2) {
-    const angle = (x1*x2 + y1*y2) / Math.sqrt(Math.pow(x1,2) + Math.pow(y1,2)) * Math.sqrt(Math.pow(x2,2) + Math.pow(y2,2));
-    return Math.acos(angle); 
+    const angle = (x1 * x2 + y1 * y2) / Math.sqrt(Math.pow(x1, 2) + Math.pow(y1, 2)) * Math.sqrt(Math.pow(x2, 2) + Math.pow(y2, 2));
+    return Math.acos(angle);
 }
 
 /**
@@ -130,8 +130,7 @@ function getAngleBetweenVectors(x1, y1, x2, y2) {
  *     0     => 0
  */
 function getLastDigit(value) {
-    let result =value.toString()
-    return result[value.length-1];
+    return value % 10;
 }
 
 
@@ -164,7 +163,7 @@ function parseNumberFromString(value) {
  *   1,2,3   => 3.741657386773941
  */
 function getParallelipidedDiagonal(a, b, c) {
-    return Math.sqrt(Math.pow(a,2) + Math.pow(b,2) + Math.pow(c,2))
+    return Math.sqrt(Math.pow(a, 2) + Math.pow(b, 2) + Math.pow(c, 2))
 }
 
 /**
@@ -192,7 +191,7 @@ function roundToPowerOfTen(num, pow) {
  * Returns true is the number is prime; otherwise false.
  * See: https://en.wikipedia.org/wiki/Primality_test
  *
- * @param {number} n
+ * @param {number} number
  * @return {bool}
  * 
  * @example:
@@ -205,8 +204,28 @@ function roundToPowerOfTen(num, pow) {
  *   16 => false
  *   17 => true
  */
-function isPrime(n) {
-    throw new Error('Not implemented');
+function isPrime(number) {
+    if (typeof number !== 'number' || !Number.isInteger(number)) {
+        return false;
+    }
+
+    if (number < 2) {
+        return false;
+    }
+
+    if (number === 2) {
+        return true;
+    } else if (number % 2 === 0) {
+        return false;
+    }
+
+    for (var i = 3; i * i <= number; i += 2) {
+        if (number % i === 0) {
+            return false;
+        }
+    }
+    return true;
+
 }
 
 /**
@@ -225,6 +244,29 @@ function isPrime(n) {
  *   toNumber(new Number(42), 0) => 42
  */
 function toNumber(value, def) {
+    var res = (typeof value === 'number') || (value instanceof Number);
+
+    // console.log(parseNumberFromString('1'));
+
+
+    // if(typeof value === 'string'){
+    //     const flag = parseNumberFromString(value);
+    //     return flag;
+    // }
+    // let result;
+    // if(res) {
+    //     result =  value;
+    //     console.log(result);
+
+    // } else if(typeof value === 'string')  {
+    //     result =  parseNumberFromString(value);
+    //     console.log(result+'-------');
+    // } else {
+    //     result =  def;
+    //     console.log(result);
+    // }
+    // console.log(result);
+    // return result;
     throw new Error('Not implemented');
 }
 
